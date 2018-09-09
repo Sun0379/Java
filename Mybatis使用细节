@@ -1,0 +1,10 @@
+1、因为使用了接口，所以namespace的id需要和接口名保持一致，还需要和本身map的xml名字一致 
+2、接口中的方法和mapper.xml中的select id/update id保持一致
+3、junit测试的时候，test里面的传参（路径+namespace.id，如demo.mybatis.mydemo2.mapper.SignupMapper.selectAll）要和map.xmll中的namaspace.id一致，这里的id指的是resultType标签的id
+4、标签的id属性里面不能有英文句号"."出现，同一个namespace下面id不能重复
+5、select标签的id指向controller里面建立的sql连接，用于获取结果集，且和接口中的方法一致
+6、select标签中的resultMap属性和resultMap标签的id保持一致，select的resultMap也必须指向实体类别名，或者说必须在mybatis.xml中配置别名
+7、resultMap标签的Type指向对应的实体类，而且和接口中的返回值一致，resultMap标签的指向实体类别名--奇怪
+8、在实际匹配时，mybatis会把resultMap中property和column都转为大写，再进行初步匹配，mybatis还有mapUnderscoreToCamelCase方法，可以把下划线形式映射为大小写
+9、column是从数据库里得到的列名，或者列的别名，property是列映射到结果集的属性
+10、update和insert等标签不能使用resultType，原因是mybatis的dtd文件里面没有给update标签声明resultType
