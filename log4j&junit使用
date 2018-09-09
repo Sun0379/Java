@@ -1,0 +1,15 @@
+###  1、junit的test报错method initializationerror not found opening the test class，根据查的资料和调试情况如下：
+####   1、有返回值的方法不能直接测试
+####   2、带参数的方法不能直接测试
+####   3、访问权限在public一下的方法不能直接测试
+####   4、static静态方法不能直接测试，必须为void，没有返回值，没有任何修饰final，static等等
+####   5、junit版本不合适
+####   6、缺少junit的两个依赖包hamcrest-core和hamcrest-library
+####   7、test和java下面的目录结构不一样
+
+
+###  2、log4j报错:ERROR Could not find value for key log4j.appender.CONSOLE，主要原因如下：
+####   1、rootLogger后面的日志输出级别只能有一个；
+####   2、配置日志后面的参数一定是大写，且不能有空格，参数名具体是console了还是stdout关系不大；
+####   3、除了最后一个console其他的必须大写，所以最好都大写；
+####   4、layout布局必须放到ConsoleAppender之后，不然初始化Appender会报错；
