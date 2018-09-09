@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="demo.mybatis.mydemo2.mapper.SignupMapper">
+<!-- 1、因为使用了接口，所以namespace的id需要和接口名保持一致，不用接口的时候namespace随意，不重复就好
+		2、标签的id属性里面不能有英文句号"."出现，同一个namespace下面id不能重复
+		3、select标签的id指向controller里面建立的sql连接，用于获取结果集
+		4、select标签中的resultMap属性和resultMap标签的id保持一致
+		5、resultMap标签的Type指向对应的实体类
+		6、在实际匹配时，mybatis会把resultMap中property和column都转为大写，再进行初步匹配，mybatis还有mapUnderscoreToCamelCase方法，可以把下划线形式映射为大小写
+		7、javaType属性-->
+	<resultMap id="SelectAll"  type="demo.mybatis.mydemo2.model.Signup">
+		<result property="StudyAttribute" column="Attribute"/>
+		<result property="StudyName" column="Name"/>
+		<result property="StudyQQ" column="QQ"/>
+		<result property="StudySchool" column="School"/>
+		<result property="StudyDream" column="Dream"/>
+		<result property="StudyTeacher" column="Teacher"/>
+	</resultMap>
+
+	<!-- select标签的id和接口中的方法名是一样的 -->
+	<select id="selectAll"  resultType="SelectAll">
+			select Attribute,Name,QQ,School,Dream,Teacher from study
+	</select>
+	<resultMap id="selectByNumber1"  type="demo.mybatis.mydemo2.model.Signup">
+		<result property="StudyAttribute" column="Attribute"/>
+		<result property="StudyName" column="Name"/>
+		<result property="StudyQQ" column="QQ"/>
+		<result property="StudySchool" column="School"/>
+		<result property="StudyDream" column="Dream"/>
+		<result property="StudyTeacher" column="Teacher"/>
+	</resultMap>
+	<!-- select标签的id和接口中的方法名是一样的 -->
+	<select id="selectByNumber1" parameterType="java.lang.Integer" resultType="selectByNumber1">
+			select Attribute,Name,QQ,School,Dream,Teacher from study where Number1=#{Number1}
+	</select>
+	<!--<resultMap id="updateByNumber1"  type="demo.mybatis.mydemo2.model.Signup">
+		<result property="StudyAttribute" column="Attribute"/>
+		<result property="StudyNumber1" column="Number1"/>
+		<result property="StudyDream" column="Dream"/>
+		<result property="StudyTeacher" column="Teacher"/>
+	</resultMap>-->
+	<!-- select标签的id和接口中的方法名是一样的 -->
+	<update id="updateByNumber1">
+			update study set Attribute=#{Attribute},Dream=#{Dream},Teacher=#{Teacher} where Number1=#{Number1}
+	</update>
+	<!--<resultMap id="insertByNumber1"  type="demo.mybatis.mydemo2.model.Signup" >
+		<result property="StudyAttribute" column="Attribute"/>
+		<result property="StudyName" column="Name"/>
+		<result property="StudyQQ" column="QQ"/>
+		<result property="StudyIn_Time" column="In_Time"/>
+		<result property="StudyNumber1" column="Number1"/>
+		<result property="StudyWeb" column="Web"/>
+		<result property="StudySchool" column="School"/>
+		<result property="StudyDream" column="Dream"/>
+		<result property="StudyTeacher" column="Teacher"/>
+		<result property="StudyKnown" column="Known"/>
+	</resultMap>-->
+	<!-- select标签的id和接口中的方法名是一样的 -->
+	<insert id="insertByNumber1">
+			insert study set Id=#{Id},Attribute=#{Attribute},Name=#{Name},QQ=#{QQ},In_Time=#{In_Time},School=#{School},Number1=#{Number1},Web=#{Web},Dream=#{Dream},Teacher=#{Teacher},Known=#{Known}
+	</insert>
+	<resultMap id="deleteByNumber1"  type="demo.mybatis.mydemo2.model.Signup">
+		<result property="StudyNumber1" column="Number1"/>
+	</resultMap>
+	<!-- select标签的id和接口中的方法名是一样的 -->
+	<delete id="deleteByNumber1">
+			delete from study where Number1=#{Number1}
+	</delete>
+
+</mapper>
