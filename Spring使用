@@ -1,0 +1,3 @@
+1、在使用web.xml的init-param标签配置个人得到springmvc.xml的时候，路径为红色不能识别：
+    原因，是需要把spring的上一层目录mark ass resources root，我的目录为web/WEB-INF/config/spring/springmvc.xml，路径为spring/springmvc.xml，需要标注config目录。
+2、
