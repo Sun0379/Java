@@ -7,7 +7,7 @@
 
 ####    1、[Mybatis-XML配置方式](https://github.com/Sun0379/Java/tree/master/mydemo2)<br>
 
-####    2、Mybatis-注解配置方式
+####    2、Mybatis-注解配置方式(https://github.com/Sun0379/Java/tree/master/DemoMybatis2)<br>
 
 ###  二、Tips<br>
 ----------------------
