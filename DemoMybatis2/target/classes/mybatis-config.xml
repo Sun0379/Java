@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--延迟加载配置setting-->
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+    <typeAliases>
+        <!-- <typeAlias type="com.java4724.entity" alias="Grade" /> -->
+        <!--例子有问题 <package name="demo.mybatis.mydemo.model"/>-->
+        <typeAlias alias="SelectAll" type="com.sun0379.entity.Signup"/>
+        <typeAlias alias="SelectByNumber1" type="com.sun0379.entity.Signup"/>
+        <package name="com.sun0379"/>
+    </typeAliases>
+    <!-- 对事务的管理和连接池的配置 -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC">
+                <property name="" value=""/>
+            </transactionManager>
+            <dataSource type="UNPOOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url"
+                          value="jdbc:mysql://localhost:3306/signup?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!-- mapping 文件路径配置
+    <mappers>
+        <mapper resource="demo/mybatis/mydemo2/mapper/SignupMapper.xml"/>
+        <!- resource只能一个一个加map.xml，下面的可以批量加
+        		会循环判断mapper包下面的所有接口，循环判断是否对应的namespace是否存在，
+        		存在就抛出异常，不存在就加载接口对应的XML映射，把接口全限定名转为路径，比如将
+        		demo/mybatis/mydemo2/mapper/SignupMapper转为demo/mybatis/mydemo2/mapper/SignupMapper.xml
+        		以xml为后缀搜索XML，找到就解析-->
+        <!-- <package name="demo.mybatis.mydemo2.mapper"/> -->
+    <!--</mappers>-->
+    <mappers>
+        <mapper class="com.sun0379.mapper.SignupMapper"/>
+    </mappers>
+</configuration>
